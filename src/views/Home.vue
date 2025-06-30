@@ -22,7 +22,8 @@
         </div>
         <div class="grid-4">
           <div v-for="course in courses" :key="course.id" class="course-card">
-            <img :src="`https://placehold.co/600x400/${course.imageColor}/FFFFFF?text=${course.imageText}&font=noto-sans-sc`" :alt="course.title">
+            <!-- 修改点: 改为调用函数生成图像 -->
+            <img :src="createCourseImage(course.imageText, course.imageColor, course.id)" :alt="course.title" class="course-card-image">
             <div class="course-info">
               <span class="age-tag">{{ course.age }}</span>
               <h3>{{ course.title }}</h3>
@@ -79,20 +80,20 @@
           <div class="testimonial-card">
             <p>"iSpace的课程设计太棒了！我家孩子以前坐不住，现在每周都盼着上编程课，做的动画小作品越来越有创意了！"</p>
             <div class="author">
-              <img src="https://placehold.co/100x100/333/fff?text=%E5%BC%A0" alt="家长头像">
+              <img :src="createAvatar('张')" alt="家长头像">
               <div>
-                <strong>张女士</strong>
-                <span>二年级学员家长</span>
+                <strong>张女士</strong>&nbsp;
+                <span> 二年级学员家长</span>
               </div>
             </div>
           </div>
           <div class="testimonial-card">
             <p>"孩子在这里学编程快一年了，不仅学会了做小游戏，逻辑思维和专注力也明显提高了，非常感谢老师们的耐心指导。"</p>
             <div class="author">
-              <img src="https://placehold.co/100x100/333/fff?text=%E6%9D%8E" alt="家长头像">
+              <img :src="createAvatar('李')" alt="家长头像">
               <div>
-                <strong>李女士</strong>
-                <span>五年级学员家长</span>
+                <strong>李女士</strong>&nbsp;
+                <span> 五年级学员家长</span>
               </div>
             </div>
           </div>
@@ -105,6 +106,76 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { courses } from '../data/courses';
+import { createAvatar } from '../utils/avatar'; // 导入函数
+
+/**
+ * Creates a local SVG course image with a background pattern as a Base64 data URI.
+ * @param {string} text The text to display.
+ * @param {string} colorHex The background color hex code.
+ * @param {string} courseId The ID of the course to select a pattern.
+ * @returns {string} A Base64 data URI for the SVG image.
+ */
+const createCourseImage = (text, colorHex, courseId) => {
+  // A library of SVG patterns for different courses
+  const patterns = {
+    '5-7': `
+      <defs>
+        <g id="pattern-lego" transform="rotate(15 50 50)">
+          <rect x="0" y="0" width="25" height="25" rx="4" fill="rgba(255,255,255,0.1)"/>
+          <circle cx="12.5" cy="12.5" r="6" fill="rgba(255,255,255,0.12)"/>
+        </g>
+      </defs>
+      <pattern id="p-lego" patternUnits="userSpaceOnUse" width="70" height="70">
+        <use href="#pattern-lego" x="0" y="0" />
+        <use href="#pattern-lego" x="35" y="35" />
+      </pattern>
+      <rect width="100%" height="100%" fill="url(#p-lego)" />`,
+    '8-10': `
+      <defs>
+        <path id="pattern-puzzle" d="M50 20 v-10 c0 -15 -20 -15 -20 0 v10 h-10 c-15 0 -15 20 0 20 h10 v10 c0 15 20 15 20 0 v-10 h10 c15 0 15 -20 0 -20 z" fill="rgba(255,255,255,0.12)"/>
+      </defs>
+      <pattern id="p-puzzle" patternUnits="userSpaceOnUse" width="100" height="100" patternTransform="rotate(-10)">
+        <use href="#pattern-puzzle" x="10" y="10" transform="scale(0.7)"/>
+        <use href="#pattern-puzzle" x="60" y="60" transform="scale(0.7)"/>
+      </pattern>
+      <rect width="100%" height="100%" fill="url(#p-puzzle)" />`,
+    '11-14': `
+      <defs>
+        <text id="pattern-code" font-family="monospace" font-weight="bold" font-size="60" fill="rgba(255,255,255,0.12)">
+          &lt;/&gt;
+        </text>
+      </defs>
+      <pattern id="p-code" patternUnits="userSpaceOnUse" width="220" height="220" patternTransform="rotate(25)">
+        <use href="#pattern-code" x="20" y="60" />
+        <text x="110" y="160" font-family="monospace" font-weight="bold" font-size="60" fill="rgba(255,255,255,0.12)">{}</text>
+      </pattern>
+      <rect width="100%" height="100%" fill="url(#p-code)" />`,
+    '14-plus': `
+      <defs>
+        <path id="pattern-trophy" d="M20 0 h60 v10 h-60 z M30 15 h40 v40 c0 10 -10 10 -10 20 h-20 c0 -10 -10 -10 -10 -20 z M40 80 h20 v10 h-20 z" fill="rgba(255,255,255,0.15)"/>
+      </defs>
+      <pattern id="p-trophy" patternUnits="userSpaceOnUse" width="120" height="120" patternTransform="rotate(-15)">
+        <use href="#pattern-trophy" x="20" y="20" transform="scale(0.7)"/>
+      </pattern>
+      <rect width="100%" height="100%" fill="url(#p-trophy)" />`
+  };
+
+  const patternSvg = patterns[courseId] || '';
+
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+      <rect width="100%" height="100%" fill="#${colorHex}" />
+      ${patternSvg}
+      <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle"
+            font-family="Manrope, Noto Sans SC, sans-serif" font-size="48" font-weight="700" fill="#FFFFFF" text-shadow="1px 1px 3px rgba(0,0,0,0.2)">
+        ${text}
+      </text>
+    </svg>
+  `;
+  const svgBase64 = btoa(unescape(encodeURIComponent(svg)));
+  return `data:image/svg+xml;base64,${svgBase64}`;
+};
+
 
 const bgContainer = ref(null);
 
@@ -211,4 +282,11 @@ onMounted(() => {
 }
 .author strong { color: var(--dark-color); }
 .author span { font-size: 0.9rem; }
+
+/* 新增的样式，确保图片显示正确 */
+.course-card-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
 </style>

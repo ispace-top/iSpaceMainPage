@@ -6,7 +6,7 @@ export const courses = [
     age: '5-7岁',
     title: '创意启蒙',
     description: '通过不插电游戏、乐高和Scratch Jr.，点燃孩子的创造火花。',
-    imageText: encode('创意启蒙'),
+    imageText: '创意启蒙',
     imageColor: '9b59b6',
     headerDescription: '在故事与游戏中，播下逻辑与创意的种子',
     details: {
@@ -44,7 +44,7 @@ export const courses = [
     age: '8-10岁',
     title: '图形化编程',
     description: '在游戏和动画创作中，系统学习编程知识，培养逻辑思维与解决问题的能力。',
-    imageText: encode('图形化编程'),
+    imageText: '图形化编程',
     imageColor: 'FF7A59',
     headerDescription: '在动画与游戏中释放无限创造力',
     details: {
@@ -82,7 +82,7 @@ export const courses = [
     age: '11-14岁',
     title: '代码语言入门',
     description: '学习主流编程语言Python，开启人工智能与数据科学的大门。',
-    imageText: encode('代码编程'),
+    imageText: '代码编程',
     imageColor: '00C49A',
     headerDescription: '从代码世界开启AI与数据科学之旅',
     details: {
@@ -120,7 +120,7 @@ export const courses = [
     age: '14岁+',
     title: '算法与竞赛',
     description: '系统学习C++与算法，挑战信息学竞赛，冲击名校。',
-    imageText: encode('算法竞赛'),
+    imageText: '算法竞赛',
     imageColor: 'FFC107',
     headerDescription: '冲击信息学竞赛，挑战思维极限',
     details: {

@@ -3,11 +3,11 @@
     <div class="container">
       <div class="footer-content" id="about-us">
         <div class="footer-about">
-          <img src="/imges/logo.png" alt="爱思培斯 Footer Logo" class="footer-logo">
+          <img src="/images/logo.png" alt="爱思培斯 Footer Logo" class="footer-logo">
           <div class="social-links">
-            <a href="#" aria-label="微信公众号"><i class="fab fa-weixin"></i></a>
-            <a href="#" aria-label="知乎"><i class="fab fa-zhihu"></i></a>
-            <a href="#" aria-label="Bilibili"><i class="fab fa-bilibili"></i></a>
+            <a href="#" @click.prevent="showWeChat" aria-label="微信公众号"><i class="fab fa-weixin"></i></a>
+            <a href="https://www.zhihu.com" target="_blank" rel="noopener noreferrer" aria-label="知乎"><i class="fab fa-zhihu"></i></a>
+            <a href="https://www.bilibili.com" target="_blank" rel="noopener noreferrer" aria-label="Bilibili"><i class="fab fa-bilibili"></i></a>
           </div>
           <p>我们相信每个孩子都有无限的创造潜能。iSpace致力于提供最优质的科技教育，陪伴孩子一同成长，构筑属于他们的数字未来。</p>
         </div>
@@ -16,23 +16,37 @@
           <ul>
             <li><a href="/#courses">核心课程</a></li>
             <li><a href="/#features">教学特色</a></li>
-            <li><a href="#">师资团队</a></li>
-            <li><a href="#">加入我们</a></li>
+            <li><router-link to="/about#team">师资团队</router-link></li>
+            <li><router-link to="/about#careers">加入我们</router-link></li>
           </ul>
         </div>
         <div class="footer-contact">
           <h4>联系我们</h4>
-          <p><i class="fas fa-map-marker-alt"></i> 北京市海淀区西三旗</p>
-          <p><i class="fas fa-envelope"></i> wapedkj@sina.com</p>
-          <p><i class="fas fa-phone"></i> 400-4444-4400</p>
+          <p><i class="fas fa-map-marker-alt"></i> [请在此处填写您的校区地址]</p>
+          <p><i class="fas fa-envelope"></i> contact@ispace.top</p>
+          <p><i class="fas fa-phone"></i> [请在此处填写您的联系电话]</p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 爱思培斯 (iSpace). All Rights Reserved. | <a href="#">隐私政策</a> | <a href="#">服务条款</a></p>
+        <p>
+          &copy; 2025 爱思培斯 (iSpace). All Rights Reserved. | 
+          <router-link to="/privacy-policy">隐私政策</router-link> | 
+          <router-link to="/terms-of-service">服务条款</router-link> | 
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">京ICP备XXXXXXXX号-X</a>
+        </p>
       </div>
     </div>
   </footer>
 </template>
+
+<script setup>
+import { openModal } from '../store';
+import WeChatQR from './WeChatQR.vue';
+
+const showWeChat = () => {
+  openModal('关注我们', WeChatQR);
+}
+</script>
 
 <style scoped>
 footer {
@@ -145,9 +159,16 @@ footer h4 {
     color: #7f8c8d;
     font-size: 0.9rem;
 }
+.footer-bottom p {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+}
 .footer-bottom a {
     color: #bdc3c7;
     font-weight: 500;
+    text-decoration: none;
 }
 .footer-bottom a:hover {
     color: var(--primary-color);
