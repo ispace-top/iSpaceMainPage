@@ -177,6 +177,113 @@ const createCourseImage = (text, colorHex, courseId) => {
 };
 
 
+/**
+ * Creates a local SVG course image with a background pattern as a Base64 data URI.
+ * @param {string} text The text to display.
+ * @param {string} colorHex The background color hex code.
+ * @param {string} courseId The ID of the course to select a pattern.
+ * @returns {string} A Base64 data URI for the SVG image.
+ */
+const createCourseImage = (text, colorHex, courseId) => {
+  // A library of SVG patterns for different courses
+  const patterns = {
+    '5-7': `
+      <defs>
+        <g id="pattern-lego" transform="rotate(15 50 50)">
+          <rect x="0" y="0" width="25" height="25" rx="4" fill="rgba(255,255,255,0.1)"/>
+          <circle cx="12.5" cy="12.5" r="6" fill="rgba(255,255,255,0.12)"/>
+        </g>
+      </defs>
+      <pattern id="p-lego" patternUnits="userSpaceOnUse" width="70" height="70">
+        <use href="#pattern-lego" x="0" y="0" />
+        <use href="#pattern-lego" x="35" y="35" />
+      </pattern>
+      <rect width="100%" height="100%" fill="url(#p-lego)" />`,
+    '8-10': `
+      <defs>
+        <path id="pattern-puzzle" d="M50 20 v-10 c0 -15 -20 -15 -20 0 v10 h-10 c-15 0 -15 20 0 20 h10 v10 c0 15 20 15 20 0 v-10 h10 c15 0 15 -20 0 -20 z" fill="rgba(255,255,255,0.12)"/>
+      </defs>
+      <pattern id="p-puzzle" patternUnits="userSpaceOnUse" width="100" height="100" patternTransform="rotate(-10)">
+        <use href="#pattern-puzzle" x="10" y="10" transform="scale(0.7)"/>
+        <use href="#pattern-puzzle" x="60" y="60" transform="scale(0.7)"/>
+      </pattern>
+      <rect width="100%" height="100%" fill="url(#p-puzzle)" />`,
+    '11-14': `
+      <defs>
+        <text id="pattern-code" font-family="monospace" font-weight="bold" font-size="60" fill="rgba(255,255,255,0.12)">
+          &lt;/&gt;
+        </text>
+      </defs>
+      <pattern id="p-code" patternUnits="userSpaceOnUse" width="220" height="220" patternTransform="rotate(25)">
+        <use href="#pattern-code" x="20" y="60" />
+        <text x="110" y="160" font-family="monospace" font-weight="bold" font-size="60" fill="rgba(255,255,255,0.12)">{}</text>
+      </pattern>
+      <rect width="100%" height="100%" fill="url(#p-code)" />`,
+    '14-plus': `
+      <defs>
+        <path id="pattern-trophy" d="M20 0 h60 v10 h-60 z M30 15 h40 v40 c0 10 -10 10 -10 20 h-20 c0 -10 -10 -10 -10 -20 z M40 80 h20 v10 h-20 z" fill="rgba(255,255,255,0.15)"/>
+      </defs>
+      <pattern id="p-trophy" patternUnits="userSpaceOnUse" width="120" height="120" patternTransform="rotate(-15)">
+        <use href="#pattern-trophy" x="20" y="20" transform="scale(0.7)"/>
+      </pattern>
+      <rect width="100%" height="100%" fill="url(#p-trophy)" />`
+  };
+
+  const patternSvg = patterns[courseId] || '';
+
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+      <rect width="100%" height="100%" fill="#${colorHex}" />
+      ${patternSvg}
+      <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle"
+            font-family="Manrope, Noto Sans SC, sans-serif" font-size="48" font-weight="700" fill="#FFFFFF" text-shadow="1px 1px 3px rgba(0,0,0,0.2)">
+        ${text}
+      </text>
+    </svg>
+  `;
+  const svgBase64 = btoa(unescape(encodeURIComponent(svg)));
+  return `data:image/svg+xml;base64,${svgBase64}`;
+};
+
+/**
+ * Creates a local SVG avatar as a Base64 data URI.
+ * This avoids external API calls and encoding issues.
+ * @param {string} initial The character to display.
+ * @returns {string} A Base64 data URI for the SVG image.
+ */
+const createAvatar = (initial) => {
+  if (!initial) return '';
+
+  const char = initial.charAt(0).toUpperCase();
+  
+  // Deterministic color generation based on the character
+  let hash = 0;
+  for (let i = 0; i < char.length; i++) {
+    hash = char.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  let color = '#';
+  for (let i = 0; i < 3; i++) {
+    const value = (hash >> (i * 8)) & 0xFF;
+    const adjustedValue = Math.floor((value + 150) / 2); // Brighter colors
+    color += ('00' + adjustedValue.toString(16)).substr(-2);
+  }
+
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="50" fill="${color}" />
+      <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle"
+            font-family="Manrope, Noto Sans SC, sans-serif" font-size="50" font-weight="700" fill="#FFFFFF">
+        ${char}
+      </text>
+    </svg>
+  `;
+
+  // Base64 encode the SVG to handle all characters safely
+  const svgBase64 = btoa(unescape(encodeURIComponent(svg)));
+
+  return `data:image/svg+xml;base64,${svgBase64}`;
+};
+
 const bgContainer = ref(null);
 
 onMounted(() => {
