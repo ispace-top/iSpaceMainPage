@@ -142,7 +142,7 @@ a:hover { color: var(--secondary-color); }
     height: 80px;
 }
 .logo img {
-    height: 40px; /* 控制Logo图片的高度 */
+    height: 60px; /* 控制Logo图片的高度 */
     width: auto;
 }
 .main-nav ul {
