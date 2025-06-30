@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱思培斯 iSpace - 科技与教育的融合创新者</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入外部字体和图标库 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- 导航栏 -->
+    <header id="main-header">
+        <div class="container">
+            <!-- Logo图片替换了原来的文字Logo -->
+            <a href="#" class="logo">
+                <img src="./imges/logo.png" alt="爱思培斯 iSpace Logo">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#services">技术服务</a></li>
+                    <li><a href="#education">教育中心</a></li>
+                    <li><a href="#why-us">为何选择</a></li>
+                    <li><a href="#testimonials">客户声音</a></li>
+                </ul>
+            </nav>
+            <a href="#contact" class="btn btn-primary">获取报价</a>
+            <button id="mobile-menu-toggle"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- 移动端导航菜单 -->
+    <div id="mobile-nav">
+        <a href="#services">技术服务</a>
+        <a href="#education">教育中心</a>
+        <a href="#why-us">为何选择</a>
+        <a href="#testimonials">客户声音</a>
+        <a href="#contact" class="btn btn-primary">获取报价</a>
+    </div>
+
+    <main>
+        <!-- 英雄区域 -->
+        <section class="hero">
+            <div class="hero-bg-shapes"></div>
+            <div class="container hero-content">
+                <h1 class="animate-on-scroll">用代码点亮创意，用科技驱动未来</h1>
+                <p class="animate-on-scroll">爱思培斯（iSpace）专注于为企业提供卓越的软件解决方案，并为青少年打造面向未来的科技教育。</p>
+                <div class="hero-buttons animate-on-scroll">
+                    <a href="#services" class="btn btn-primary">了解技术方案</a>
+                    <a href="#education" class="btn btn-secondary">探索编程课程</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技术服务区域 -->
+        <section id="services" class="section-padding">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-tag">For Business</span>
+                    <h2>为企业量身定制的技术解决方案</h2>
+                </div>
+                <div class="grid-3">
+                    <div class="feature-card animate-on-scroll">
+                        <div class="icon-circle"><i class="fas fa-code"></i></div>
+                        <h3>软件定制开发</h3>
+                        <p>根据您的独特业务需求，开发高性能、可扩展的Web应用、移动App和企业级软件。</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="icon-circle"><i class="fas fa-users-gear"></i></div>
+                        <h3>IT咨询与规划</h3>
+                        <p>提供专业的技术战略咨询，帮助您的企业完成数字化转型，提升运营效率。</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="icon-circle"><i class="fas fa-cloud-arrow-up"></i></div>
+                        <h3>产品销售与集成</h3>
+                        <p>销售成熟的软件产品，并提供无缝的系统集成服务，确保技术平稳落地。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 教育中心区域 -->
+        <section id="education" class="section-padding bg-light">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-tag">For Young Learners</span>
+                    <h2>开启孩子的无限潜能</h2>
+                </div>
+                <div class="grid-3">
+                    <div class="course-card animate-on-scroll">
+                        <!-- 更新了占位图颜色以匹配新Logo -->
+                        <img src="https://placehold.co/600x400/00D9C0/FFFFFF?text=创意编程" alt="[创意编程课程的图片]">
+                        <div class="course-info">
+                            <span class="age-tag">6-9岁</span>
+                            <h3>Scratch 创意编程</h3>
+                            <p>在游戏和动画创作中，培养逻辑思维与解决问题的能力。</p>
+                            <a href="#">课程详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="course-card animate-on-scroll">
+                        <img src="https://placehold.co/600x400/00A9E0/FFFFFF?text=Python入门" alt="[Python入门课程的图片]">
+                        <div class="course-info">
+                            <span class="age-tag">10-14岁</span>
+                            <h3>Python 编程入门</h3>
+                            <p>学习真实世界的编程语言，开启人工智能与数据科学大门。</p>
+                            <a href="#">课程详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="course-card animate-on-scroll">
+                        <img src="https://placehold.co/600x400/3A5BBE/FFFFFF?text=竞赛冲刺" alt="[信息学竞赛课程的图片]">
+                        <div class="course-info">
+                            <span class="age-tag">12岁+</span>
+                            <h3>信息学竞赛冲刺</h3>
+                            <p>系统学习算法与数据结构，挑战更高难度的编程竞赛。</p>
+                            <a href="#">课程详情 <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 为何选择我们 -->
+        <section id="why-us" class="section-padding">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-tag">Our Advantage</span>
+                    <h2>我们值得您的信赖</h2>
+                </div>
+                <div class="grid-4">
+                    <div class="advantage-item animate-on-scroll">
+                        <i class="fas fa-users"></i>
+                        <h4>专家团队</h4>
+                        <p>核心成员来自一线科技公司和知名教育机构。</p>
+                    </div>
+                    <div class="advantage-item animate-on-scroll">
+                        <i class="fas fa-lightbulb"></i>
+                        <h4>创新课程</h4>
+                        <p>项目式学习(PBL)贯穿始终，激发内在驱动力。</p>
+                    </div>
+                    <div class="advantage-item animate-on-scroll">
+                        <i class="fas fa-handshake-angle"></i>
+                        <h4>贴心服务</h4>
+                        <p>为每位客户和学员建立专属档案，全程跟踪服务。</p>
+                    </div>
+                    <div class="advantage-item animate-on-scroll">
+                        <i class="fas fa-trophy"></i>
+                        <h4>成果导向</h4>
+                        <p>无论是商业项目还是学生作品，我们都以成果说话。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 客户评价 -->
+        <section id="testimonials" class="section-padding bg-light">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-tag">Testimonials</span>
+                    <h2>听听客户怎么说</h2>
+                </div>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card animate-on-scroll">
+                        <p>"爱思培斯团队非常专业，他们开发的系统极大地提升了我们的工作效率。沟通顺畅，交付准时！"</p>
+                        <div class="author">
+                            <img src="https://placehold.co/100x100/333/fff?text=王" alt="[客户头像]">
+                            <div>
+                                <strong>王先生</strong>
+                                <span>某科技公司 CEO</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card animate-on-scroll">
+                        <p>"孩子在这里学编程快一年了，不仅学会了做小游戏，逻辑思维和专注力也明显提高了，非常感谢老师们的耐心指导。"</p>
+                        <div class="author">
+                            <img src="https://placehold.co/100x100/333/fff?text=李" alt="[家长头像]">
+                            <div>
+                                <strong>李女士</strong>
+                                <span>学员家长</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer id="contact">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-about">
+                        <img src="logo.png" alt="爱思培斯 Footer Logo" class="footer-logo">
+                        <p>科技赋能成长，代码构筑未来。我们期待与您携手，共同探索无限可能。</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="微信公众号"><i class="fab fa-weixin"></i></a>
+                            <a href="#" aria-label="微博"><i class="fab fa-weibo"></i></a>
+                            <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-links">
+                        <h4>快速链接</h4>
+                        <ul>
+                            <li><a href="#services">技术服务</a></li>
+                            <li><a href="#education">教育中心</a></li>
+                            <li><a href="#">关于我们</a></li>
+                            <li><a href="#">加入我们</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-contact">
+                        <h4>联系我们</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> [请在此处填写您的公司地址]</p>
+                        <p><i class="fas fa-envelope"></i> contact@ispace.top</p>
+                        <p><i class="fas fa-phone"></i> [请在此处填写您的联系电话]</p>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 爱思培斯 (iSpace). All Rights Reserved. | <a href="#">隐私政策</a> | <a href="#">服务条款</a></p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
