@@ -1,0 +1,319 @@
+:root {
+    --primary-color: #FF7A59;   /* 活力橙 */
+    --secondary-color: #00C49A; /* 清新绿 */
+    --accent-color: #FFC107;    /* 阳光黄 */
+    --dark-color: #4A4A4A;      /* 更柔和的深灰色文字 */
+    --light-color: #FDFDFD;      /* 更干净的浅灰背景 */
+    --white-color: #FFFFFF;
+    --text-color: #6c757d;      /* 普通段落文字颜色 */
+    --border-color: #EAEAEA;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    --font-heading: 'Manrope', 'Noto Sans SC', sans-serif;
+    --font-body: 'Manrope', 'Noto Sans SC', sans-serif;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    background-color: var(--white-color);
+    line-height: 1.7;
+}
+
+/* --- 通用组件 --- */
+.container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 1.5rem;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--dark-color);
+    font-weight: 700;
+}
+
+h1 { font-size: 3.5rem; line-height: 1.2; }
+h2 { font-size: 2.2rem; line-height: 1.3; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.2rem; }
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+a:hover { color: var(--secondary-color); }
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+.btn-primary:hover {
+    background-color: #E66A4D;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 122, 89, 0.4);
+}
+.btn-secondary {
+    background-color: rgba(0, 196, 154, 0.1);
+    color: #008a7d;
+    font-weight: bold;
+}
+.btn-secondary:hover {
+    background-color: rgba(0, 196, 154, 0.2);
+    transform: translateY(-2px);
+}
+
+.section-padding { padding: 6rem 0; }
+.bg-light { background-color: var(--light-color); }
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.section-tag {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--dark-color);
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+/* --- 课程卡片 --- */
+.course-card {
+    background-color: var(--white-color);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--border-color);
+    display: flex; 
+    flex-direction: column; 
+}
+.course-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+.course-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.course-info { 
+    padding: 1.5rem; 
+    flex-grow: 1; 
+    display: flex; 
+    flex-direction: column; 
+}
+.age-tag {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    padding: 0.2rem 0.6rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.course-info h3 { margin-bottom: 0.5rem; }
+.course-info p {
+    flex-grow: 1; 
+}
+.course-info a {
+    display: inline-block;
+    margin-top: 1rem; 
+    font-weight: 700;
+    color: var(--primary-color);
+    align-self: flex-start; 
+}
+
+/* --- 课程详情页样式 (已优化) --- 
+*/
+.course-detail-header {
+    padding: 4rem 0;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--white-color);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 350px; /* 增加最小高度 */
+}
+
+.course-detail-header h1 {
+    color: var(--white-color);
+    font-size: 3.2rem; /* 调整标题大小 */
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.course-detail-header p {
+    font-size: 1.2rem; /* 调整副标题大小 */
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.course-detail-body {
+    display: flex;
+    flex-wrap: wrap; /* 允许换行 */
+    gap: 3rem;
+    margin-top: -5rem; /* 向上移动更多 */
+    position: relative;
+    z-index: 2;
+}
+
+.course-detail-main {
+    flex: 1;
+    min-width: 65%; /* 确保主内容区有足够宽度 */
+    background: var(--white-color);
+    padding: 3rem; /* 增加内边距 */
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.course-detail-sidebar {
+    flex: 1;
+    min-width: 300px; /* 设置侧边栏最小宽度 */
+}
+
+.sidebar-widget {
+    background: var(--white-color);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    border-top: 4px solid var(--primary-color);
+}
+
+.sidebar-widget h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.course-meta-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.course-meta-list li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.2rem;
+    font-size: 1rem;
+}
+
+.course-meta-list i {
+    color: var(--primary-color);
+    margin-right: 1rem;
+    width: 20px;
+    margin-top: 4px;
+}
+
+.btn-full {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+.course-content h2 {
+    font-size: 1.8rem; /* 调整内容区标题大小 */
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.8rem;
+}
+.course-content h2:first-of-type {
+    margin-top: 0;
+}
+
+.course-content p, .course-content ul {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem; /* 调整正文大小 */
+    line-height: 1.8;
+}
+
+.course-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.course-content ul li {
+    padding-left: 2.2rem;
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.course-content ul li::before {
+    content: '\f058'; 
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: var(--secondary-color);
+    position: absolute;
+    left: 0;
+    top: 5px;
+    font-size: 1.2rem;
+}
+
+/* --- 响应式设计 --- */
+@media (max-width: 992px) {
+    h1 { font-size: 2.8rem; }
+    h2 { font-size: 2rem; }
+    
+    .course-detail-body {
+        flex-direction: column;
+        margin-top: -4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-grid { 
+        grid-template-columns: 1fr; 
+    }
+    .course-detail-header h1 {
+        font-size: 2.4rem;
+    }
+    .course-detail-main {
+        padding: 2rem;
+    }
+}
+
+/* 关键帧动画 */
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+    100% { transform: translateY(0) rotate(360deg); }
+}

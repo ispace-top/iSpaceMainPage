@@ -1,0 +1,56 @@
+node_modules/
+.yarn/             # Yarn 2+ 缓存目录
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+### 构建输出 ###
+dist/
+build/
+coverage/         # 测试覆盖率报告
+release/          # 自定义打包目录
+
+### 配置文件 ###
+.env              # 所有环境变量文件(按需单独提交 .env.production 等)
+.env.local
+.env.*.local
+
+### IDE 和编辑器 ###
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+### 操作系统生成 ###
+.DS_Store
+Thumbs.db
+
+### 依赖管理文件 ###
+pnpm-lock.yaml    # pnpm 锁定文件(若未使用可删除)
+package-lock.json # npm 锁定文件(若未使用可删除)
+yarn.lock         # Yarn 锁定文件(若未使用可删除)
+
+### 测试相关 ###
+cypress/screenshots/
+cypress/videos/
+jest_cache/
+
+### Vue CLI 特定 ###
+.local-config/    # Vue CLI 本地配置缓存
+/src/service-worker.js # PWA 服务工作者(通常需构建后生成)
+
+### 临时文件 ###
+*.log
+*.tmp
+*.temp
+*~
+
+### 源代码映射 ###
+*.map             # 忽略所有源码映射文件
