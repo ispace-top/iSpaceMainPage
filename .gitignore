@@ -1,5 +1,5 @@
 node_modules/
-.yarn/             # Yarn 2+ 缓存目录
+.yarn/ 
 .yarn/cache/
 .yarn/unplugged/
 .yarn/build-state.yml
@@ -33,9 +33,9 @@ release/          # 自定义打包目录
 Thumbs.db
 
 ### 依赖管理文件 ###
-pnpm-lock.yaml    # pnpm 锁定文件(若未使用可删除)
-package-lock.json # npm 锁定文件(若未使用可删除)
-yarn.lock         # Yarn 锁定文件(若未使用可删除)
+!yarn.lock
+package-lock.json
+pnpm-lock.yaml
 
 ### 测试相关 ###
 cypress/screenshots/
