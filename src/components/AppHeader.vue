@@ -9,10 +9,10 @@
           <li><a href="/#courses">核心课程</a></li>
           <li><a href="/#features">教学特色</a></li>
           <li><a href="/#testimonials">学员评价</a></li>
-          <li><a href="/#about-us">关于我们</a></li>
+          <li><router-link to="/about">关于我们</router-link></li>
         </ul>
       </nav>
-      <a href="#contact" class="btn btn-primary">预约免费试听</a>
+      <a href="#" @click.prevent="showBookingModal" class="btn btn-primary">预约免费试听</a>
       <button id="mobile-menu-toggle" @click="toggleMobileMenu">
         <i class="fas" :class="isMobileMenuOpen ? 'fa-times' : 'fa-bars'"></i>
       </button>
@@ -22,13 +22,15 @@
     <a href="/#courses" @click="closeMobileMenu">核心课程</a>
     <a href="/#features" @click="closeMobileMenu">教学特色</a>
     <a href="/#testimonials" @click="closeMobileMenu">学员评价</a>
-    <a href="/#about-us" @click="closeMobileMenu">关于我们</a>
-    <a href="#contact" class="btn btn-primary" @click="closeMobileMenu">预约免费试听</a>
+    <router-link to="/about" @click="closeMobileMenu">关于我们</router-link>
+    <a href="#" @click.prevent="showBookingModal" class="btn btn-primary">预约免费试听</a>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { openModal } from '../store';
+import BookingForm from './BookingForm.vue';
 
 const isScrolled = ref(false);
 const isMobileMenuOpen = ref(false);
@@ -44,6 +46,11 @@ const toggleMobileMenu = () => {
 const closeMobileMenu = () => {
   isMobileMenuOpen.value = false;
 };
+
+const showBookingModal = () => {
+  closeMobileMenu();
+  openModal('预约免费试听课', BookingForm);
+}
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll);
