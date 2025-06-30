@@ -54,8 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgContainer = document.querySelector('.hero-bg-shapes');
     if (bgContainer) {
         const shapes = ['circle', 'square', 'triangle'];
-        // 更新颜色数组以匹配新Logo
-        const colors = ['#3A5BBE', '#00D9C0', '#00A9E0', '#2c3e50'];
+        // 更新颜色数组以匹配新的、活泼的配色方案
+        const colors = ['#FF7A59', '#00C49A', '#FFC107', '#6C63FF'];
         
         for (let i = 0; i < 20; i++) {
             const shape = document.createElement('div');
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             shape.style.left = `${Math.random() * 100}%`;
             shape.style.top = `${Math.random() * 100}%`;
             shape.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            shape.style.opacity = '0.15'; // 稍微调高不透明度
+            shape.style.opacity = '0.15';
             shape.style.animation = `float ${Math.random() * 20 + 10}s infinite linear`;
 
             const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
