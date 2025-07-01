@@ -261,7 +261,7 @@ onMounted(() => {
     background-color: var(--white-color);
     padding: 2rem;
     border-radius: 1rem;
-    border-left: 5px solid var(--secondary-color);
+    border-left: 5px solid var(--primary-color);
 }
 .testimonial-card p {
     font-size: 1.1rem;

@@ -154,7 +154,7 @@ a:hover { color: var(--secondary-color); }
 }
 .age-tag {
     display: inline-block;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: var(--white-color);
     padding: 0.2rem 0.6rem;
     border-radius: 5px;

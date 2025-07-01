@@ -1,6 +1,6 @@
 <template>
   <div class="wechat-qr-container">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://ispace.top" alt="微信公众号二维码">
+    <img src="/public/images/wechat.png" alt="微信公众号二维码">
     <p>微信扫一扫，关注我们</p>
   </div>
 </template>

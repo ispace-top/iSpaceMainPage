@@ -22,9 +22,9 @@
         </div>
         <div class="footer-contact">
           <h4>联系我们</h4>
-          <p><i class="fas fa-map-marker-alt"></i> [请在此处填写您的校区地址]</p>
-          <p><i class="fas fa-envelope"></i> contact@ispace.top</p>
-          <p><i class="fas fa-phone"></i> [请在此处填写您的联系电话]</p>
+          <p><i class="fas fa-map-marker-alt"></i> 北京市海淀区西三旗街道</p>
+          <p><i class="fas fa-envelope"></i> service@ispace.top</p>
+          <p><i class="fas fa-phone"></i> 13161619352</p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -32,7 +32,7 @@
           &copy; 2025 爱思培斯 (iSpace). All Rights Reserved. | 
           <router-link to="/privacy-policy">隐私政策</router-link> | 
           <router-link to="/terms-of-service">服务条款</router-link> | 
-          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">京ICP备XXXXXXXX号-X</a>
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">京ICP备2023004494号</a>
         </p>
       </div>
     </div>
